@@ -1,7 +1,7 @@
 # Interactive Star Map
 
 **Welcome to the Cosmic Experience!** This interactive web app lets you explore the night sky in real time. Customize your celestial view, tweak the stars, and generate your own personalized star map! 
-- See it live! Check out the interactive star map at [star.modhtom.com](star.modhtom.com).
+- See it live! Check out the interactive star map at [star.modhtom.com](https://star.modhtom.com).
 ---
 
 ## Features
