@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Star Map</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 Interactive Star Map</h1>
+            <p class="subtitle">View the night sky for any location and time</p>
+        </header>
+
+        <div class="controls">
+            <form id="inputForm">
+                <div class="form-group">
+                    <label>📍 Select Location</label>
+                    <div id="locationPicker"></div>
+                    <p class="coordinates-display">Selected: <span id="selectedLocation">No location selected</span></p>
+                    <div class="error" id="locationError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">🕒 Date & Time (UTC)</label>
+                    <input type="datetime-local" id="date" required>
+                    <div class="error" id="dateError"></div>
+                </div>
+
+                <div class="form-group">
+                    
+                    <div class="slider-group">
+                        <label>🔭 Field of View:
+                            <input type="range" id="zoomScale" min="0.5" max="3" value="1" step="0.1">
+                        </label>
+                    </div> 
+                    
+                    <label>✨ Star Appearance</label>
+                    <div class="slider-group">
+                        <label>Brightness: <input type="range" id="starBrightness" min="0.1" max="2" value="1" step="0.1"></label>
+                        <label>Size Scale: <input type="range" id="starSize" min="0.5" max="3" value="1.5" step="0.1"></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>🔭 Display Options</label>
+                    <div class="toggle-group">
+                        <label><input type="checkbox" name="constellations" checked> Constellations</label>
+                        <label><input type="checkbox" name="labels" checked> Labels</label>
+                        <label><input type="checkbox" name="dsos" checked> DSOs</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-btn">
+                    <span class="btn-text">Generate Star Map</span>
+                    <div class="spinner hidden"></div>
+                </button>
+            </form>
+
+            <div class="location-info hidden" id="locationInfo">
+                <h3>🌍 Viewing From:</h3>
+                <p>Latitude: <span id="lat"></span></p>
+                <p>Longitude: <span id="lon"></span></p>
+                <p>Local Sidereal Time: <span id="lst"></span></p>
+            </div>
+        </div>
+
+        <div id="mapContainer">
+            <div id="map"></div>
+            <div class="loading-overlay hidden">
+                <div class="loading-spinner"></div>
+                <p>Rendering star map...</p>
+            </div>
+        </div>
+        
+        <button id="downloadBtn" class="download-btn hidden">📥 Download Star Map</button>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="star-example"></div>
+                <span>Stars</span>
+            </div>
+            <div class="legend-item">
+                <div class="constellation-example"></div>
+                <span>Constellations</span>
+            </div>
+            <div class="legend-item">
+                <div class="dso-example"></div>
+                <span>Deep Sky Objects</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-geo/3.1.0/d3-geo.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>

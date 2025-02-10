@@ -1,0 +1,228 @@
+:root {
+    --primary: #6c5ce7;
+    --background: #0f0f1f;
+    --surface: #1a1b26;
+    --text: #e0e0ff;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.subtitle {
+    color: #a0a0ff;
+    margin-top: 0.5rem;
+}
+
+.controls {
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+input[type="datetime-local"] {
+    width: 100%;
+    padding: 0.8rem;
+    background: #2a2b3a;
+    border: 1px solid #3a3b4a;
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.generate-btn {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.generate-btn:hover {
+    background: #7b6cf0;
+    transform: translateY(-1px);
+}
+
+.spinner {
+    border: 3px solid rgba(255,255,255,0.2);
+    border-top-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#mapContainer {
+    position: relative;
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.legend {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.star-example {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+}
+
+.constellation-example {
+    width: 30px;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+}
+
+.dso-example {
+    width: 12px;
+    height: 12px;
+    background: #6c5ce7;
+    border-radius: 2px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.download-btn {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.2s;
+    display: block;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.download-btn:hover {
+    background: #7b6cf0;
+    transform: translateY(-1px);
+}
+
+#locationPicker {
+    height: 300px;
+    width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+    z-index: 1;
+}
+
+.coordinates-display {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #a0a0ff;
+}
+
+.leaflet-container {
+    background: #2a2b3a;
+}
+
+.leaflet-popup-content-wrapper {
+    background: var(--surface);
+    color: var(--text);
+}
+
+.leaflet-popup-tip {
+    background: var(--surface);
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.slider-group input[type="range"] {
+    width: 200px;
+}
+
+.tooltip {
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 0.9rem;
+}
