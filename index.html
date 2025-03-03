@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>🌌 Interactive Star Map</h1>
+            <h1>Interactive Star Map</h1>
             <p class="subtitle">View the night sky for any location and time</p>
         </header>
 
@@ -95,6 +95,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="preload" href="DATA/stars.6.json" as="fetch">
+    <link rel="preload" href="DATA/constellations.lines.json" as="fetch">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-geo/3.1.0/d3-geo.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script>

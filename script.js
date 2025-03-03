@@ -9,8 +9,9 @@ class StarMap {
         this.selectedCoords = null;
         this.customColors = {
             stars: '#ffffff',
-            constellations: '#ffffff',
-            dsos: '#6c5ce7'
+            constellations: 'rgba(255, 255, 255, 0.6)',
+            dsos: '#6c5ce7',
+            background: '#0a0b17'
         };
         this.starAppearance = {
             brightness: 1,
@@ -18,7 +19,7 @@ class StarMap {
         };
         this.currentViewMode = 'equatorial';
         this.debouncedHandleSubmit = this.debounce(() => this.handleSubmit(), 300);
-        this.zoomScale=1;
+        this.zoomScale=1.8;
         this.init();
     }
     debounce(func, wait) {
@@ -221,7 +222,7 @@ class StarMap {
             .attr('cx', '50%')
             .attr('cy', '50%')
             .attr('r', '50%')
-            .style('fill', '#1a1b26');
+            .style('fill', this.customColors.background);
 
         this.currentMap = this.currentMap.append('g')
             .attr('clip-path', 'url(#circle-clip)')
@@ -369,30 +370,39 @@ class StarMap {
     }
 
     downloadImage() {
-        const svgElement = document.querySelector('#mapContainer svg');
+        const svgElement = this.mapContainer.querySelector('svg');
+        const rect = svgElement.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+    
+        if (!svgElement.getAttribute("viewBox")) {
+            svgElement.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        }
+    
         const svgData = new XMLSerializer().serializeToString(svgElement);
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
+    
+        const scaleFactor = window.devicePixelRatio || 1;
+        canvas.width = width * scaleFactor;
+        canvas.height = height * scaleFactor;
+        context.scale(scaleFactor, scaleFactor);
+    
         const image = new Image();
-
-        const width = svgElement.getBoundingClientRect().width;
-        const height = svgElement.getBoundingClientRect().height;
-        canvas.width = width;
-        canvas.height = height;
-
         image.onload = () => {
-            context.fillStyle = '#1a1b26'; // Match the background color
+            context.fillStyle = this.customColors.background;
             context.fillRect(0, 0, width, height);
-            context.drawImage(image, 0, 0);
-
+            context.drawImage(image, 0, 0, width, height);
+    
             const a = document.createElement('a');
             a.download = 'star_map.png';
             a.href = canvas.toDataURL('image/png');
             a.click();
         };
-
+    
         image.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
     }
+    
     
     showError(message, elementId = null) {
         if (elementId) {
