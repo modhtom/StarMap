@@ -1,0 +1,45 @@
+Interactive Star Map Non-Commercial License
+============================================
+
+Copyright (c) 2025 Mohamed Abdalgader
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"),
+to use, copy, modify, and distribute the Software solely for non-commercial purposes,
+subject to the following conditions:
+
+1. Attribution Requirement
+   --------------------------
+   Any use, copy, modification, or distribution of the Software or any derivative works
+   must include prominent credit to ME as the original author. This attribution
+   must be clearly displayed in any distributed version or public presentation of the Software.
+
+2. Non-Commercial Use Only
+   -------------------------
+   The Software may not be used for commercial purposes. Commercial use includes, but is not
+   limited to, any use that is intended for or directed toward commercial advantage or monetary gain.
+   No rights are granted for commercial exploitation of the Software without obtaining
+   a separate, written license from modhtom.
+
+3. Distribution and Derivative Works
+   ------------------------------------
+   Redistribution of the Software, whether in its original form or modified, is permitted only
+   under the terms of this License. Any derivative works must also comply with the terms of this License,
+   including the non-commercial and attribution requirements.
+
+4. No Warranty
+   -------------
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+   INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+   AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+   DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM,
+   OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+5. Termination
+   --------------
+   Failure to comply with any of the terms of this License will result in an automatic termination
+   of your rights under this License.
+
+By using the Software, you acknowledge that you have read, understood, and agree to be bound
+by the terms and conditions of this License. For any permissions beyond the scope of this License,
+please contact ME.
