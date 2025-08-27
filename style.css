@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 :root {
     --primary: #8367df;
     --primary-light: #a28dff;
@@ -41,7 +43,6 @@ body::before {
     z-index: -1;
 }
 
-/* Nebula-like gradient */
 body::after {
     content: '';
     position: fixed;
@@ -126,7 +127,8 @@ label {
 }
 
 input[type="text"],
-input[type="datetime-local"] {
+input[type="datetime-local"],
+.custom-select {
     width: 100%;
     padding: 1rem;
     background: var(--surface-light);
@@ -136,19 +138,31 @@ input[type="datetime-local"] {
     font-size: 1rem;
     transition: all 0.2s;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 input[type="text"]:focus,
-input[type="datetime-local"]:focus {
+input[type="datetime-local"]:focus,
+.custom-select:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 2px rgba(132, 59, 255, 0.2);
 }
 
+.custom-select {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23a28dff%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: .65em auto;
+    padding-right: 2.5rem;
+}
+
 .toggle-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.8rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
     margin-top: 0.8rem;
 }
 
@@ -168,6 +182,7 @@ input[type="datetime-local"]:focus {
     background: var(--surface);
     cursor: pointer;
     position: relative;
+    flex-shrink: 0;
 }
 
 .toggle-group input[type="checkbox"]:checked {
@@ -182,6 +197,57 @@ input[type="datetime-local"]:focus {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.button-group {
+    margin-bottom: 2rem;
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: 1px solid var(--primary);
+    color: var(--primary-light);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+    background: rgba(131, 103, 223, 0.1);
+    color: white;
+}
+
+.animation-controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.animation-controls .custom-select {
+    flex-grow: 1;
+}
+
+.control-btn {
+    padding: 0.8rem 1.2rem;
+    background: var(--surface-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.control-btn:hover {
+    background: var(--primary-dark);
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .generate-btn {
@@ -267,10 +333,22 @@ input[type="datetime-local"]:focus {
     background: radial-gradient(circle at center, #1b1c38 0%, #0a0b17 80%);
 }
 
-/* Make the star map SVG more beautiful */
 #map svg {
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
 }
+
+.milky-way {
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: none;
+}
+
+.constellation-border {
+    stroke: rgba(131, 103, 223, 0.5);
+    stroke-width: 1px;
+    stroke-dasharray: 4, 4;
+    fill: none;
+}
+
 
 .loading-overlay {
     position: absolute;
@@ -323,6 +401,14 @@ input[type="datetime-local"]:focus {
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 
+.planet-example {
+    width: 12px;
+    height: 12px;
+    background: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+}
+
 .constellation-example {
     width: 36px;
     height: 2px;
@@ -336,6 +422,14 @@ input[type="datetime-local"]:focus {
     background: var(--primary);
     border-radius: 50%;
     box-shadow: 0 0 8px rgba(132, 59, 255, 0.6);
+}
+
+.milkyway-example {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
 .hidden {
@@ -393,6 +487,12 @@ input[type="datetime-local"]:focus {
 
 .leaflet-container {
     background: var(--surface-light);
+}
+
+.leaflet-control-geocoder-form input {
+    background-color: var(--surface) !important;
+    color: var(--text) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .leaflet-popup-content-wrapper {
@@ -477,6 +577,25 @@ input[type="range"]::-webkit-slider-thumb:hover {
     margin: 0.4rem 0;
 }
 
+.color-pickers {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+}
+
+.picker-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.pcr-button {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
@@ -491,8 +610,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     }
 
     .toggle-group {
-        flex-direction: column;
-        gap: 1rem;
+        grid-template-columns: 1fr;
     }
 
     .legend {
@@ -501,13 +619,3 @@ input[type="range"]::-webkit-slider-thumb:hover {
         align-items: center;
     }
 }
-.star, .dso {
-    transition: opacity 0.3s;
-  }
-
-  .map-container {
-    will-change: transform;
-    contain: strict;
-  }
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
