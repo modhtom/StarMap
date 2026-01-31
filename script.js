@@ -535,33 +535,52 @@ class StarMap {
             if (errorEl) errorEl.textContent = message;
         }
     }
-
     downloadImage() {
         const svgElement = this.mapContainer.querySelector('svg');
-        const svgData = new XMLSerializer().serializeToString(svgElement);
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
         const { width, height } = svgElement.getBoundingClientRect();
         
+        const size = Math.min(width, height);
         const scaleFactor = 2;
-        canvas.width = width * scaleFactor;
-        canvas.height = height * scaleFactor;
-        context.scale(scaleFactor, scaleFactor);
-    
+
+        const clonedSvg = svgElement.cloneNode(true);
+        clonedSvg.setAttribute('width', width);
+        clonedSvg.setAttribute('height', height);
+        
+        const svgData = new XMLSerializer().serializeToString(clonedSvg);
+
+        const canvas = document.createElement('canvas');
+        canvas.width = size * scaleFactor;
+        canvas.height = size * scaleFactor;
+        const ctx = canvas.getContext('2d');
+        
         const image = new Image();
         image.onload = () => {
-            context.fillStyle = this.customColors.background;
-            context.fillRect(0, 0, width, height);
-            context.drawImage(image, 0, 0, width, height);
-    
+            ctx.scale(scaleFactor, scaleFactor);
+
+            const radius = size / 2;
+            ctx.beginPath();
+            ctx.arc(radius, radius, radius, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.clip();
+
+            ctx.fillStyle = this.customColors.background;
+            ctx.fillRect(0, 0, size, size);
+
+            const sx = (width - size) / 2;
+            const sy = (height - size) / 2;
+
+            ctx.drawImage(image, sx, sy, size, size, 0, 0, size, size);
+
             const a = document.createElement('a');
-            a.download = 'star_map.png';
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+            a.download = `star_map_${timestamp}.png`;
             a.href = canvas.toDataURL('image/png');
             a.click();
         };
+
         image.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
     }
-    
+
     hideTooltip() { document.querySelectorAll('.tooltip').forEach(t => t.remove()); }
 
     showStarTooltip(event, star) {
