@@ -62,6 +62,9 @@
                     <select id="labelLanguage" class="custom-select">
                         <option value="en">English</option>
                         <option value="ar">Arabic</option>
+                        <option value="es">Spanish</option>
+                        <option value="de">German</option>
+                        <option value="fr">French</option>
                     </select>
                 </div>
 
@@ -104,8 +107,74 @@
                 <p>Rendering star map...</p>
             </div>
         </div>
-        
-        <button id="downloadBtn" class="download-btn hidden">📥 Download Star Map</button>
+
+        <button id="downloadBtn" class="download-btn hidden">Download Star Map</button>
+
+        <div id="downloadModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Download Options</h2>
+                
+                <div class="download-container">
+                    <div class="download-controls">
+                        <h3>1. Choose Template</h3>
+                        <div class="template-options">
+                            <div class="template-option active" data-template="clean">
+                                <div class="preview-thumb clean"></div>
+                                <span>Clean (PNG)</span>
+                            </div>
+                            <div class="template-option" data-template="polaroid">
+                                <div class="preview-thumb polaroid"></div>
+                                <span>Polaroid</span>
+                            </div>
+                            <div class="template-option" data-template="poster">
+                                <div class="preview-thumb poster"></div>
+                                <span>Modern Poster</span>
+                            </div>
+                        </div>
+
+                        <h3>2. Add Details</h3>
+                        <div class="input-group">
+                            <label>Title</label>
+                            <input type="text" id="mapTitle" placeholder="The Night We Met" maxlength="30">
+                        </div>
+                        <div class="input-group">
+                            <label>Date Label</label>
+                            <input type="text" id="mapDateLabel" placeholder="July 20, 1969">
+                        </div>
+
+                        <h3>3. Style Options</h3>
+                        <div class="input-group">
+                            <label>Font Style</label>
+                            <select id="templateFont" class="custom-select">
+                                <option value="'Montserrat', sans-serif">Modern (Sans)</option>
+                                <option value="'Georgia', serif">Classic (Serif)</option>
+                                <option value="'Courier New', monospace">Typewriter (Mono)</option>
+                                <option value="cursive">Handwritten</option>
+                            </select>
+                        </div>
+                        <div class="style-row">
+                            <div class="input-group">
+                                <label>Card Color</label>
+                                <input type="color" id="templateBgColor" value="#ffffff" class="color-input">
+                            </div>
+                            <div class="input-group">
+                                <label>Text Color</label>
+                                <input type="color" id="templateTextColor" value="#000000" class="color-input">
+                            </div>
+                        </div>
+
+                        <button id="finalDownloadBtn" class="generate-btn">Download Image</button>
+                    </div>
+
+                    <div class="preview-area">
+                        <h3>Preview</h3>
+                        <div id="canvasPreviewContainer">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="legend">
             <div class="legend-item"><div class="star-example"></div><span>Stars</span></div>

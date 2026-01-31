@@ -29,7 +29,11 @@
   - Change the colors of the background, constellations, DSOs, and the grid.
   - Switch constellation labels between English, Arabic, and default abbreviations.
 
-- **Save Your Sky** – Download your custom star map as a high-resolution PNG.
+- **Design & Download Studio** – Create professional-quality prints directly from the app:
+  - **Templates:** Choose from **Clean** (transparent PNG), **Polaroid** style, or a **Modern Poster** layout.
+  - **Full Customization:** Edit the **Title** and **Date/Location** text.
+  - **Styling:** Select from multiple **fonts** (Modern, Classic, Typewriter, Handwritten) and pick custom **background and text colors**.
+  - **Live Preview:** See your changes in real-time before downloading high-resolution images.
 
 - **Nerdy Details** – Get real-time latitude, longitude, and local sidereal time for your selected view.
 
